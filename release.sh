@@ -90,6 +90,7 @@ zip -r "$ZIP_NAME" . -x "${EXCLUDES[@]}" || abort "Failed to zip plugin"
 # ─── COMMIT AND TAG ─────────────────────────────────────────────────────
 git add .
 git commit -m "Release v$VERSION" || echo "Nothing to commit"
+git push origin main || echo "⚠️ Failed to push changes to main"
 git tag -f "$TAG"
 git push origin "$TAG" || echo "⚠️ Tag push failed (may already exist or no remote)"
 
